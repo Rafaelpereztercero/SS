@@ -1,0 +1,124 @@
+<!--HEADER-->
+<header>
+  <section>
+    <div>
+      Logotype
+    </div>
+    <div>
+      Registrate o inicia sesión
+    </div>
+  </section>
+  <div>
+    <input type="text" placeholder="">
+    <img src="https://cdn-icons-png.flaticon.com/512/622/622605.png">
+    <span>Buscar en todas las categorías</span>
+
+  </div>
+
+</header>
+<!--END HEADER-->
+<!--PRIMERA SECCIÓN-->
+<section>
+  <div>
+    <span>
+      Lorem ipsum dolor sit amet,consectetur adiscing elit.
+    </span>
+    <div></div>
+  </div>
+  <input type="button" value="Vender Artículo" />
+  <a href="">¿Cómo funciona?</a>
+</section>
+<!--FIN PRIMERA SECCIÓN-->
+<!--DESCUBRE POR CATEGORIA-->
+<section>
+  <span>Descubre por categoría</span>
+  <section id="categories">
+    <div *ngFor="let category of categories | category: pagination.categorySize">
+      <div></div>
+      <p>{{category.name}}</p>
+    </div>
+    <div *ngFor="let blank of pagination.categroyBlank">
+      <div></div>
+      <p></p>
+    </div>
+  </section>
+  <div id="show"><input type="button" (click)="showCategories()" value="Ver Todas">
+  </div>
+
+</section>
+<!--FIN DESCUBRE CATEGORÍA-->
+<!--ARTIULOS POPULARES-->
+<section>
+  <span>Articulos populares</span>
+  <div class="dotted"></div>
+  <section>
+    <div *ngFor="let product of products | top; let index = index;">
+      <div (click)="productRedirect(product!.id!)">
+        <div></div>
+        <span>{{product.name}}</span>
+        <span>{{product.description | desclen}}</span>
+        <span>Hace {{product.created_at |timedif}}</span>
+        <span>{{product.price}} €</span>
+        <span>🤍 {{product.likes}}</span>
+      </div>
+    </div>
+
+
+  </section>
+</section>
+<!--FIN ARTIULOS POPULARES-->
+<!--PUBLICADOS RECIENTEMENTE-->
+<section>
+  <span>Publicados recientemente</span>
+  <section>
+    <div *ngFor=" let product of products | pagination : pagination.pageSize; let index = index;">
+      <div (click)="productRedirect(product!.id!)">
+        <div></div>
+        <span>{{product.name}}</span>
+        <span>{{product.description | desclen}}</span>
+        <span>Hace {{product.created_at |timedif}}</span>
+        <span>{{product.price}} €</span>
+        <span>🤍 {{product.likes}}</span>
+      </div>
+    </div>
+
+  </section>
+</section>
+<!--FIN PUBLICADOS RECIENTEMENTE-->
+<!--PASOS PARA PUBLICAR-->
+<section>
+  <span class="steps">Publica tu artículo en sencillos pasos</span>
+  <section>
+    <div>
+      <img src="https://gcdnb.pbrd.co/images/tZz2cpdmTtoJ.png?o=1">
+      <span>Título y Descripción de tu artículo</span>
+    </div>
+    <div>
+      <span>Selecciona la Marca y una Categoría</span>
+      <img src="https://gcdnb.pbrd.co/images/tZz2cpdmTtoJ.png?o=1">
+    </div>
+    <div>
+      <img src="https://gcdnb.pbrd.co/images/tZz2cpdmTtoJ.png?o=1">
+      <span>Indica el Estado y su Precio de venta</span>
+    </div>
+    <div>
+      <span>Sube diferentes fotos del artículo</span>
+      <img src="https://gcdnb.pbrd.co/images/tZz2cpdmTtoJ.png?o=1">
+    </div>
+    <div>
+      <img src="https://gcdnb.pbrd.co/images/tZz2cpdmTtoJ.png?o=1">
+      <span>Especifica el método de entrega</span>
+    </div>
+    <div>
+      <span>Marca la localización o zona viable</span>
+      <img src="https://gcdnb.pbrd.co/images/tZz2cpdmTtoJ.png?o=1">
+    </div>
+  </section>
+  <span>Listo!</span>
+  <span>Tu artículo estaría a la espera de una segunda vida.</span>
+  <span>¿Dudas?</span>
+  <span>Consulta las preguntas frecuentes.</span>
+</section>
+<footer>
+  FOOTER
+</footer>

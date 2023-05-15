@@ -1,0 +1,62 @@
+<!--HEADER-->
+<header>
+  <section>
+    <div>
+      Logotype
+    </div>
+    <div>
+      Registrate o inicia sesión
+    </div>
+  </section>
+  <div>
+    <input type="text" placeholder="">
+    <img src="https://cdn-icons-png.flaticon.com/512/622/622605.png">
+    <span>Buscar en todas las categorías</span>
+  </div>
+</header>
+<section class="chat-phone">
+  <div></div>
+  <p class="chat-cat">Chats</p>
+  <p class="entrance-chat">Bandeja de Entrada</p>
+  <div class="linear"></div>
+  <section *ngIf="loaded">
+    <ng-container *ngFor="let chat of ownChats">
+    <div  (click)="messageRedirect(chat!.id!)" class="chat-card">
+      <ng-container *ngIf="chat.recept | getuser:users as Seller">
+        <ng-container *ngIf="chat.productID | getproduct:products as Product">
+          <div class="chat-img-eng">
+            <img class="p-img-chat" *ngIf="Product.photo != 'none'" [src]="Product.photo">
+            <div>
+              <img *ngIf="Seller.photo != 'none'" [src]="Seller.photo">
+            </div>
+          </div>
+          <div class="chat-inf">
+            <div class="eng-us-chat">
+              <p>{{Seller.username}}</p>
+              <p class="chat-time">hace {{chat.conversation[chat.conversation.length - 1].created_at | timedif}}</p>
+
+            </div>
+            <span>{{Product.name | desclen}}</span>
+            <div class="last-mssg-chat"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path d="M1.5 12.5L5.57574 16.5757C5.81005 16.8101 6.18995 16.8101 6.42426 16.5757L9 14"
+                    stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+                  <path d="M16 7L12 11" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+                  <path d="M7 12L11.5757 16.5757C11.8101 16.8101 12.1899 16.8101 12.4243 16.5757L22 7" stroke="#000000"
+                    stroke-width="1.5" stroke-linecap="round"></path>
+                </g>
+              </svg>
+              <p>{{chat.conversation[chat.conversation.length - 1].message}}</p>
+            </div>
+          </div>
+        </ng-container></ng-container>
+    </div>
+  </ng-container>
+  </section>
+</section>
+
+<footer>
+  FOOTER
+</footer>
